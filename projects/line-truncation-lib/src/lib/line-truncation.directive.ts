@@ -121,6 +121,8 @@ export class LineTruncationDirective
     setTimeout(() => {
       // Recursively call the truncate itself if Client Height is not ready
       if (element.clientHeight > 0) {
+        // backup original element before truncation
+        this.elementClone = element.cloneNode(true);
         const contentHeight = getContentHeight(element);
         const lineHeight = getLineHeight(element);
         const targetHeight = this.lines * lineHeight;
